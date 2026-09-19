@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""P4 pre-launch audit: my Lua targets vs the game's own pre-patch part definitions.
+"""pre-launch audit: my Lua targets vs the game's own pre-patch part definitions.
 
 Reads the ranges and the per-part EC rates straight out of the two shipped Lua files
 (so the audit cannot drift from what was deployed), then compares them against
