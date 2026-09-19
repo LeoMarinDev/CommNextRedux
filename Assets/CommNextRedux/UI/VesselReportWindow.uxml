@@ -1,0 +1,63 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CommNextStyles.uss?fileID=7433441132597879392&amp;guid=a2dd25c9df311c044b3d4c1d0b58a080&amp;type=3#CommNextStyles" />
+    <ui:VisualElement name="root" class="root vessel-report" style="flex-grow: 0; width: 400px; height: 500px; flex-shrink: 0; padding-top: 4px;">
+        <ui:VisualElement name="toolbar" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: space-between; flex-shrink: 0; margin-bottom: 4px; margin-top: 2px;">
+            <!-- U6h: `min-width: 0` on the title bar and the dash run's own clip keep the dashes
+                 INSIDE this bar. Without them the label - `white-space: nowrap` with no shrink bound
+                 - overflowed the bar and painted under the close button, all the way to the window
+                 frame (measured in the minimum-size screenshot: the dash pixels reached x=359 while
+                 the X sits at x=336..349). The shape mirrors the vanilla window's own
+                 `.oab-window-header-dashes` rule in the theme (flex-shrink: 1 + overflow: hidden);
+                 the title itself is `flex-shrink: 0` so a tight window never eats the window's name. -->
+            <ui:VisualElement style="flex-grow: 0; min-width: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center;">
+                <ui:VisualElement class="icon__small" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; align-items: center; background-image: url(&apos;project://database/Assets/Images/ReportIcon.png?fileID=21300000&amp;guid=ccbe3209822b1a64482fbbef6e8d590a&amp;type=3#ReportIcon&apos;);" />
+                <ui:Label tabindex="-1" text="VESSEL COMMS REPORT" display-tooltip-when-elided="true" class="font-pixel-subtitle" style="font-size: 13px; padding-bottom: 1px; margin-left: 3px; flex-shrink: 0;" />
+                <ui:Label tabindex="-1" text="-----------------------/" display-tooltip-when-elided="true" class="font-pixel-subtitle" style="font-size: 13px; padding-bottom: 1px; margin-left: 3px; color: rgb(59, 64, 75); white-space: nowrap; flex-shrink: 1; min-width: 0; overflow: hidden; -unity-text-align: upper-right;" />
+            </ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="close-button" enable-rich-text="true" />
+        </ui:VisualElement>
+        <!-- U6h: the header is ONE row again - [power icon] [vessel name] [Range] [Focus] - with the
+             name as the ONLY elastic member (it keeps .vessel-report__name's min-width: 0 +
+             text-overflow: ellipsis, so a long name shortens instead of running under Range; the full
+             name stays one hover away through display-tooltip-when-elided). The range is back beside
+             the Focus button, which is what the player asked for.
+
+             `flex-grow` and `flex-shrink` are 0 here, and that is the fix for the top of the window:
+             this row used to be the column's growing AND shrinking item, so at the 220 px floor the
+             column's ~152 px of over-subscription was split between it and the connections list - 28
+             px came off this row. Its own rows were both `flex-shrink: 0`, so they kept their heights
+             and were centred in the 18 px slot left over: the name row sat 14 px ABOVE its laid-out
+             position (inside the title bar) and the range/Focus row 14 px below it (the Focus
+             button's box touching the close button). The flexible space belongs to the connections
+             list, not to the header. -->
+        <ui:VisualElement name="vessel-row" style="flex-grow: 0; flex-shrink: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; margin-top: 8px; margin-bottom: 6px;">
+            <ui:VisualElement name="power-icon" class="icon__small icon--no-power" style="flex-grow: 0; background-color: rgba(207, 79, 79, 0); background-image: url(&apos;project://database/Assets/Images/PowerIcon.png?fileID=21300000&amp;guid=c50a10f38dd04714b94be75e717f92de&amp;type=3#PowerIcon&apos;); border-top-left-radius: 3px; border-bottom-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; visibility: visible; display: flex; margin-top: 3px; margin-right: 2px;" />
+            <ui:Label tabindex="-1" text="Vessel Name Test" display-tooltip-when-elided="true" name="name-label" class="vessel-report__name" style="margin-left: 2px; color: rgb(125, 142, 176);" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="range-label" style="margin-left: 6px; flex-shrink: 0;" />
+            <ui:Button text="Focus" display-tooltip-when-elided="true" name="focus-button" style="margin-left: 6px; flex-shrink: 0; height: 26px; font-size: 12px;" />
+        </ui:VisualElement>
+        <!-- U6h: at the 360 px minimum this row must FIT - 150 + 150 + 32 + the theme's base-field
+             margins is wider than the 342 px content box, which pushed the sort button ~5 px past the
+             content box and left it 4 px from the window frame (the player's "very small margins of
+             the filter icons"). Both fields can now shrink (`min-width: 0`), the sort button cannot
+             (`flex-shrink: 0`), and the row is `flex-grow: 0` so it stays pinned under the header at
+             every size instead of floating in it. -->
+        <ui:VisualElement name="filter-row" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-shrink: 0; align-items: center; margin-bottom: 6px;">
+            <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="filter-dropdown" class="dropdown-field dropdown-field--inline" style="margin-left: 0; width: 150px; min-width: 0; flex-grow: 1; flex-shrink: 1;" />
+            <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="sort-dropdown" class="dropdown-field dropdown-field--inline" style="margin-left: 4px; width: 150px; min-width: 0; flex-grow: 1; flex-shrink: 1;" />
+            <CommNext.Unity.Runtime.Controls.SortDirectionButton focusable="true" direction="Descending" name="sort-direction-button" style="margin-left: 4px; flex-shrink: 0;" />
+        </ui:VisualElement>
+        <!-- U6h: `height: auto` + `flex-grow: 1` + `min-height: 0` is the load-bearing change of this
+             pass. The theme's own `.unity-scroll-view { height: 100% }` (KerbalUI.uss, the vendored
+             theme) made this list's flex BASE the window's full content height at every size, so the
+             column was over-subscribed by ~152 px at the 220 px floor and the shrink landed on the
+             header (see vessel-row above). With the base back to its content, the list takes exactly
+             the space the fixed rows leave - and gives it all back when the window shrinks. -->
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="connections-list" style="flex-grow: 1; flex-shrink: 1; min-height: 0; height: auto;" />
+        <!-- U6h: natural height at the bottom of the column (`flex-grow: 0`), and shrinkable so an
+             over-full band table can never push a rect out of the window frame; a vessel with all
+             five bands at the 220 px floor is the one case where the last band rows are cut inside
+             this list rather than shown. -->
+        <ui:VisualElement name="bands-list" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-shrink: 1; min-height: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

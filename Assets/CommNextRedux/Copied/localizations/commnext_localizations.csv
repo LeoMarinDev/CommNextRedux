@@ -1,0 +1,37 @@
+﻿Key,Type,Desc,English,German,French,Italian,Spanish,Japanese,Korean,Polish,Russian,Chinese (Simplified),Portuguese (Brazil),Chinese (Traditional)
+PartModules/NextRelay/Name,Text,,Signal Relay,Signalrelais,Relais de signal,Ripetitore di Segnale,Relé de señal,信号中继,신호 중계기,Przekaźnik sygnału,Ретранслятор,信号中继,Relé de sinal,信号中继
+PartModules/NextRelay/RelayDescription,Text,,This antenna behaves as a relay,Diese Antenne verhält sich wie ein Relais,Cette antenne se comporte comme un relais,Questa antenna si comporta da ripetitore,Esta antena se comporta como un relé,此天线作为中继,이 안테나는 중계기로 작동합니다,Ta antena działa jako przekaźnik,Эта антенна работает как реле,这款天线能够中继信号,Esta antena se comporta como um relé,此天线作为中继
+PartModules/NextRelay/Band,Text,,Band,Band,Bande,Banda,Banda,频段,대역,Przepustka,Диапазон,频段,Banda,频段
+PartModules/NextRelay/SecondaryBand,Text,,Secondary Band,Sekundärband,Bande secondaire,Banda Secondaria,Banda secundaria,次要频段,보조 대역,Druga przepustka,Вторичный диапазон,次要频段,Banda secundária,次要频段
+PartModules/NextModulator/Name,Text,,Signal Modulator,Signalmodulator,Modulateur de signal,Modulatore di Segnale,Modulador de señal,信号调制器,신호 변조기,Modulator sygnału,Модулятор сигнала,信号调制器,Modulador de sinal,信号调制器
+PartModules/NextModulator/Kind,Text,,Modulation kind,Modulationsart,Type de modulation,Tipo di modulazione,Tipo de modulación,调制类型,변조 종류,Rodzaj modulacji,Вид модуляции,调制类型,Tipo de modulação,调制类型
+PartModules/NextModulator/KindMonoBand,Text,,Mono-band,Mono-Band,Mono-bande,Mono-banda,Mono-banda,单频段,단일 대역,Jednozakresowy,Моно-диапазон,单频段,Mono-banda,单频段
+PartModules/NextModulator/KindDualBand,Text,,Dual-band,Dual-Band,Dual-bande,Dual-banda,Dual-banda,双频段,듀얼 대역,Dwuzakresowy,Двойной диапазон,双频段,Dual-banda,双频段
+PartModules/NextModulator/KindOmniBand,Text,,Omni-band,Omni-Band,Omni-bande,Omni-banda,Omni-banda,全频段,옴니밴드,Omni-band,Омни-диапазон,全频段,Omni-banda,全频段
+CommNext/UI/EnableRelay,Text,Enable relay,Enable relay,Relais aktivieren,Activer le relais,Abilita ripetitore,Activar relé,启用中继,릴레이 활성화,Włącz przekaźnik,Включить реле,启用中继,Ativar relé,启用中继
+CommNext/UI/OmniBand,Text,,Omni-band,Omni-Band,Omni-bande,Omni-banda,Omni-banda,全频段,옴니밴드,Omni-band,Омни-диапазон,全频段,Omni-banda,全频段
+CommNext/UI/ConnectionsDisplayModeNone,Text,Connections display mode: None,Disabled,Deaktiviert,Désactivé,Disabilitato,Desactivado,禁用,비활성화,Dezaktywowane,Отключено,禁用,Desativado,禁用
+CommNext/UI/ConnectionsDisplayModeLines,Text,Connections display mode: Lines,All active connections,Alle aktiven Verbindungen,Toutes les connexions actives,Tutte le connessioni attive,Todas las conexiones activas,所有活动连接,모든 활성 연결,Wszystkie aktywne połączenia,Все активные соединения,所有活动连接,Todas as conexões ativas,所有活动连接
+CommNext/UI/ConnectionsDisplayModeActive,Text,Connections display mode: Active,Active vessel path,Aktiver Schiffspfad,Chemin du vaisseau actif,Percorso del veicolo attivo,Ruta de la nave activa,活动船只路径,활성 선박 경로,Aktywna ścieżka statku,Активный путь судна,活动船只路径,Caminho da nave ativa,活动船只路径
+CommNext/UI/RulersDisplayModeNone,Text,Rulers display mode: None,Disabled,Deaktiviert,Désactivé,Disabilitato,Desactivado,禁用,비활성화,Dezaktywowane,Отключено,禁用,Desativado,禁用
+CommNext/UI/RulersDisplayModeRelays,Text,Rulers display mode: Relays,Only relays,Nur Relais,Seulement les relais,Solo ripetitori,Solo relés,只有中继,릴레이만,Tylko przekaźniki,Только реле,只有中继,Apenas relés,只有中继
+CommNext/UI/RulersDisplayModeAll,Text,Rulers display mode: All,All,Alle,Tous,Tutti,Todos,全部,모두,Wszystkie,Все,全部,Todos,全部
+CommNext/UI/RulersTooltip,Text,Show sphere rulers tooltip,Show sphere rulers,Sphärenlineale anzeigen,Afficher les règles de la sphère,Mostra righelli sferici,Mostrar reglas de la esfera,显示球体标尺,구체 규칙 보기,Pokaż linijki sferyczne,Показать шаровые линейки,显示球体标尺,Mostrar réguas de esfera,显示球体标尺
+CommNext/UI/VesselReportTooltip,Text,,Show vessel report,Schiffbericht anzeigen,Afficher le rapport du vaisseau,Mostra report del veicolo,Mostrar informe de la nave,显示船只报告,선박 보고서 보기,Pokaż raport statku,Показать отчет о судне,显示船只报告,Mostrar relatório da nave,显示船只报告
+CommNext/UI/NoneBand,Text,None,None,Keine,Aucune,Nessuna,Ninguna,无,없음,Brak,Нет,无,Nenhum,无
+CommNext/UI/RangeLabel,Text,Max Range for current vessel,Range {0},Reichweite {0},Portée {0},Raggio {0},Alcance {0},范围 {0},범위 {0},Zasięg {0},Дальность {0},范围 {0},Alcance {0},范围 {0}
+CommNext/UI/DistanceLabel,Text,,Distance {0},Entfernung {0},Distance {0},Distanza {0},Distancia {0},距离 {0},거리 {0},Odległość {0},Расстояние {0},距离 {0},Distância {0},距离 {0}
+CommNext/UI/NoPower,Text,Relay has no power,No power,Keine Stromversorgung,Aucune alimentation,Nessuna alimentazione,Sin alimentación,无电源,전원 없음,Brak zasilania,Нет питания,无电源,Sem energia,无电源
+CommNext/UI/TooltipNoPowerCurrentVessel,Text,,Active vessel has no power,Der aktive Schiff hat keine Stromversorgung,Le vaisseau actif n'a pas d'alimentation,Il veicolo attivo non ha alimentazione,La nave activa no tiene energía,活动船只没有电源,활성 선박에 전원이 없습니다,Aktywny statek nie ma zasilania,Активное судно не имеет питания,活动船只没有电源,A nave ativa não tem energia,活动船只没有电源
+CommNext/UI/FilterLabel,Text,Tooltip for filter dropdown,Filter,Filter,Filtre,Filtra,Filtrar,过滤,필터,Filter,Filtr,过滤,Filtro,过滤
+CommNext/UI/SortLabel,Text,Tooltip for sort dropdown,Sort,Sortieren,Trier,Ordina,Ordenar,排序,정렬,Sortuj,Сортировать,排序,Ordenar,排序
+CommNext/UI/FilterAll,Text,Filter all vessels,All,Alle,Tous,Tutti,Todos,全部,모두,Wszystkie,Все,全部,Todos,全部
+CommNext/UI/ConnectionOutbound,Text,,Outbound,Ausgehend,Sortant,In uscita,Saliente,出站,발신,Wychodzące,Исходящий,出站,Saída,出站
+CommNext/UI/ConnectionInbound,Text,,Inbound,Eingehend,Entrant,In entrata,Entrante,入站,입방향,Przychodzące,Входящий,入站,Entrada,入站
+CommNext/UI/SortByDistance,Text,Sort by distance,Distance,Entfernung,Distance,Distanza,Distancia,距离,거리,Odległość,Расстояние,距离,Distância,距离
+CommNext/UI/SortByBand,Text,Sort by band,Band,Band,Bande,Banda,Banda,频段,대역,Przepustka,Диапазон,频段,Banda,频段
+CommNext/UI/SortBySignalStrength,Text,Sort by signal strength,Signal Strength,Signalstärke,Force du Signal,Intensità del Segnale,Potencia de la Señal,信号强度,신호 세기,Siła Sygnału,Уровень сигнала,信号强度,Força do Sinal,信号强度
+CommNext/UI/SortByName,Text,Sort by vessel name,Name,Name,Nom,Nome,Nombre,名称,,Nazwa,Имя,名称,Nome,名称
+CommNext/UI/In,Text,In (direction),In,In,In,In,In,入站,입방향,Przychodzące,Входящий,入站,Entrada,入站
+CommNext/UI/Out,Text,Out (direction),Out,Out,Out,Out,Out,出站,발신,Wychodzące,Исходящий,出站,Saída,出站
+CommNext/Simulation/KSCCommNet,Text,Name for the KSC CommNet displayed in network nodes list,KSC Ground Control,KSC-Bodenkontrolle,Contrôle au sol KSC,Controllo a Terra KSC,Control de Tierra KSC,KSC地面控制,KSC 지상 제어,KSC Kontrola Ziemi,Контрольный центр KSC,KSC地面控制,Controle de Solo KSC,KSC地面控制

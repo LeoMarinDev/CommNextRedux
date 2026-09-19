@@ -1,0 +1,25 @@
+{
+  "spec": "2.0",
+  "mod_id": "CommNextRedux",
+  "name": "CommNext Redux",
+  "author": "leonardfactory (Redux port)",
+  "description": "CommNet overhaul with signal occlusion and utilities.",
+  "source": "https://github.com/LeoMarinDev/CommNextRedux",
+  "version": "0.7.5",
+  "version_check": "",
+  "ksp2_version": {
+    "min": "0.2.9.0",
+    "max": "*"
+  },
+  "dependencies": [
+    {
+      "id": "SpaceWarp2",
+      "version": {
+        "min": "2.0.0",
+        "max": "*"
+      }
+    }
+  ],
+  "conflicts": [],
+  "main_assembly": "CommNextRedux.dll"
+}

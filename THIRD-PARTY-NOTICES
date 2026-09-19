@@ -1,0 +1,116 @@
+# Third-party notices — CommNextRedux
+
+This file records **what this mod redistributes**, **what it only links against**, and what it
+deliberately does not ship. Every claim below carries the command that produced it; the port's
+whole method is that a claim without evidence is not a claim.
+
+---
+
+## 1. CommNext — MIT — redistributed in full
+
+The mod this project ports.
+
+```
+Copyright (c) 2024 leonardfactory
+https://github.com/Kerbalight/CommNext
+Licence: MIT (verbatim in ../LICENSE; the original notice is retained unmodified)
+Legacy source of record: the pre-Redux CommNext repository, kept outside this repository.
+```
+
+`LICENSE` in this repository is that file, byte-for-byte in its body, plus one added line
+(`Copyright (c) 2026 CommNextRedux (KSP 2 Redux 0.2.9.0.104521 port)`).
+
+What it is redistributed **as**:
+
+| Redistributed artefact | Origin in the legacy tree | Measurement |
+|---|---|---|
+| 5 UXML pages + 1 USS (`Assets/CommNextRedux/UI/`) | `src/CommNext.Unity/CommNext.Unity/Assets/UI/` | vendored in P2; the port's own markup is an edit of these |
+| 18 PNG images (`Assets/CommNextRedux/UI/Images/`) | `src/CommNext.Unity/.../Assets/Images/` | `cmp` byte-identical for all 18 |
+| `RulerSphere.fbx` mesh | `src/CommNext.Unity/.../Assets/Meshes/RulerSphere.fbx` | staged via `Tools/legacy-render-chain/`, packed into the shipped bundle |
+| `assets/images/icon.png` | `plugin_template/assets/images/icon.png` | byte-identical, md5 `436010749cd4c3b3cb4306cbc2f6602c` |
+| `localizations/commnext_localizations.csv` | `plugin_template/localizations/commnext_localizations.csv` | derived; cut to the keys this port can paint (see §4) |
+| The ported C# behaviour (`Assets/CommNextRedux/Code/`) | `src/CommNext/` and `src/CommNext.Unity/` | re-authored against the pinned API, following the legacy's design |
+
+```bash
+# the asset-identity proof, as run in this repo
+# LEGACY below = the pre-Redux CommNext checkout, kept outside this repository
+cd mods/CommNextRedux
+LEGACY=${LEGACY:-/path/to/pre-Redux/CommNext}
+for f in Assets/CommNextRedux/UI/Images/*.png; do
+  b=$(basename "$f")
+  cmp -s "$f" "$LEGACY/src/CommNext.Unity/CommNext.Unity/Assets/Images/$b" \
+    && echo "same  $b" || echo "DIFF  $b"
+done
+```
+
+---
+
+## 2. `uitkforksp2.controls` — **not redistributed**
+
+`uitkforksp2.controls` (v3.0.0, author **munix**,
+<https://github.com/UitkForKsp2/UitkForKsp2.Controls>) owns the `UitkForKsp2.Controls.*` element
+types and the `KerbalUI.uss` stylesheet. The bundle toolchain is able to vendor a GUID-verified
+subset of it, and a sibling port does.
+
+**This mod does not ship it, and does not need it**: its markup names the package **zero** times.
+
+```text
+[bundle] uitkforksp2.controls: 0 references in the markup - the vendored subset is not packed
+[bundle] Skipping the uitkforksp2.controls subset and its plugins (markup references the package 0 times)
+# and the subset is absent from this tree:
+$ ls -d Tools/unity-bundle/uitkforksp2.controls
+ls: cannot access 'Tools/unity-bundle/uitkforksp2.controls': No such file or directory
+```
+
+If a future change makes the markup reference the package, the subset must be copied from the
+donor per `Tools/build-ui-bundle.sh` and **that package's own licence** (declared in its
+`PackageInfo`, `licensesUrl` → the UitkForKsp2.Controls repository) governs its redistribution —
+it would then need a section here, merged with this one.
+
+---
+
+## 3. Link-time only — nothing redistributed
+
+The port compiles against, and at runtime links against, the following. **No file from any of
+them is copied into this repository, into the shipped bundle, or into the release archive:**
+
+| Component | How it is reached | Note |
+|---|---|---|
+| **KSP 2 Redux** (`Assembly-CSharp.dll`, `ReduxLib.dll`, `SpaceWarp2*.dll`, `UitkForKsp2.dll`) | compile-time reference set staged from the game's own install; runtime loads its own copies | The mod is a plugin *of* the game; none of its assemblies are redistributed |
+| **SpaceWarp2** | declared as a dependency in `swinfo.json` (`min 2.0.0`) | a declaration, not a bundled file |
+| **Unity UI Toolkit** (`UnityEngine.UIElementsModule`) | the player's own engine | — |
+| **I2 Localization** (`I2.Loc`) | the player's own engine, via the mod's CSV | — |
+
+The build chain never downloads, pins or vendors a dependency binary: `Tools/build.sh`
+copies the **installed** `KSP2_x64_Data/Managed/*.dll` to `Packages/KSP2_x64` as a compile
+reference set, and `Packages/` is gitignored (`/[Pp]ackages/KSP2_x64`).
+
+---
+
+## 4. Port-authored material
+
+Not third-party, listed for completeness so a reviewer can tell the difference:
+
+* **`patches/commnext_antennas.lua` and `patches/commnext_relays.lua`** — authored for this port.
+  The legacy ships **no Lua at all** (a `find` for `*.lua` in the pre-Redux CommNext checkout → empty); the
+  part rebalance is the port's own implementation of the legacy's C# part-modification behaviour.
+* **The localization CSV's shape** — the column contract and the key set are the port's (D40); the
+  rows are the legacy table's, cut to the **36** keys something in this port actually paints. (Measured
+  under D55: the reader set is 34 `const string` keys in `Code/UI/LocalizedStrings.cs` plus the 2 keys
+  the Lua patches paint = **36 readers, 36 rows, `diff` empty**. An earlier draft of this file said 37 —
+  corrected in the closure phase, and the number is now the one the ledger's own two-way sweep measured.)
+* **`Assets/CommNextRedux/Code/**`** — the port's C#, written against the pinned API.
+
+---
+
+## 5. Reporting
+
+If you believe something here is mis-attributed or missing, the authoritative inventory of what
+ships is one command, run from the project root:
+
+```bash
+find Assets/CommNextRedux/Copied -type f -not -name '.gitkeep' | sort
+```
+
+That set — the bundle, the CSV, the two Lua patches, the icon — plus the compiled
+`CommNextRedux.dll` and `swinfo.json` **is** the mod.

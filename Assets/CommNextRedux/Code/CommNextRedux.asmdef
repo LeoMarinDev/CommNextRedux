@@ -1,0 +1,26 @@
+{
+    "name": "CommNextRedux",
+    "rootNamespace": "CommNextRedux",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "0Harmony.dll",
+        "Assembly-CSharp.dll",
+        "Newtonsoft.Json.dll",
+        "ReduxLib.dll",
+        "SpaceWarp2.dll",
+        "SpaceWarp2.UI.dll",
+        "Unity.Entities.dll",
+        "Unity.Mathematics.dll",
+        "UnityEngine.CoreModule.dll",
+        "UnityEngine.dll",
+        "UnityEngine.UIElementsModule.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
